@@ -12,7 +12,7 @@ import javax.sound.sampled.Port;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
-import static model.NewJFrame.textField1;
+import static model.NewJFrame.jTextArea1;
 
 public class Main {
 	private Logger logger = Logger.getLogger(getClass().getName());
@@ -64,7 +64,7 @@ public class Main {
 
 						result = speechResult.getHypothesis();
 						System.out.println("You said: [" + result + "]\n");
-                                                textField1.setText(textField1.getText() + result); 
+                                                jTextArea1.setText(jTextArea1.getText() + " " + result); 
 						// logger.log(Level.INFO, "You said: " + result + "\n")
 					} else
 						logger.log(Level.INFO, "I can't understand what you said.\n");
@@ -92,6 +92,7 @@ public class Main {
 				while (true) {
 					if (AudioSystem.isLineSupported(Port.Info.MICROPHONE)) {
 						//logger.log(Level.INFO, "Microphone is available.\n")
+                                                statusLabel.setText("kdslk");
 					} else {
 						// logger.log(Level.INFO, "Microphone is not
 						// available.\n")
