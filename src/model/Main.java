@@ -33,9 +33,9 @@ public class Main {
 		 configuration.setLanguageModelPath("resource:/kz_lm/kz.lm");
 
 		// Grammar
-		//configuration.setGrammarPath("resource:/grammars");
-		//configuration.setGrammarName("grammar");
-		//configuration.setUseGrammar(true);
+		configuration.setGrammarPath("resource:/grammars");
+		configuration.setGrammarName("grammar");
+		configuration.setUseGrammar(true);
 
 		try {
 			recognizer = new LiveSpeechRecognizer(configuration);
@@ -64,7 +64,9 @@ public class Main {
 
 						result = speechResult.getHypothesis();
 						System.out.println("You said: [" + result + "]\n");
-                                                jTextArea1.setText(jTextArea1.getText() + " " + result); 
+                                               if (result != "<unk>") {
+                                                jTextArea1.setText(jTextArea1.getText() + " " + result);
+                                               }
 						// logger.log(Level.INFO, "You said: " + result + "\n")
 					} else
 						logger.log(Level.INFO, "I can't understand what you said.\n");
@@ -92,7 +94,7 @@ public class Main {
 				while (true) {
 					if (AudioSystem.isLineSupported(Port.Info.MICROPHONE)) {
 						//logger.log(Level.INFO, "Microphone is available.\n")
-                                                statusLabel.setText("kdslk");
+//                                                statusLabel.setText("kdslk");
 					} else {
 						// logger.log(Level.INFO, "Microphone is not
 						// available.\n")
